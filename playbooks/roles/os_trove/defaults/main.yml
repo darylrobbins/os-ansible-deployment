@@ -91,7 +91,8 @@ trove_pip_packages:
   - python-memcached
   - python-novaclient
   - python-troveclient
-  - trove
+  - python-heatclient
+  - http://tarballs.openstack.org/trove/trove-2015.1.0-py2.py3-none-any.whl
 
 ## Service Names
 trove_service_names:
