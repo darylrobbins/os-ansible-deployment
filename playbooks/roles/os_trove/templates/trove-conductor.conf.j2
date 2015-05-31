@@ -1,0 +1,31 @@
+[DEFAULT]
+verbose = True
+debug = True
+trove_auth_url = {{ keystone_service_adminurl }}
+
+#===================== RPC Configuration =================================
+
+rpc_backend = {{ trove_rpc_backend }}
+control_exchange = trove
+
+# ================ RabbitMQ Configuration ===============================
+
+rabbit_port = {{ rabbitmq_port }}
+rabbit_userid = {{ rabbitmq_userid }}
+rabbit_password = {{ rabbitmq_password }}
+rabbit_hosts = {{ rabbitmq_servers }}
+
+# The manager class to use for conductor. (string value)
+conductor_manager = trove.conductor.manager.Manager
+
+[profiler]
+# If False fully disable profiling feature.
+#enabled = False
+# If False doesn't trace SQL requests.
+#trace_sqlalchemy = True
+
+[database]
+connection = mysql://{{ trove_galera_user }}:{{ trove_container_mysql_password }}@{{ galera_address }}/{{ trove_galera_database }}?charset=utf8
+max_overflow = {{ trove_db_max_overflow }}
+max_pool_size = {{ trove_db_max_pool_size }}
+pool_timeout = {{ trove_db_pool_timeout }

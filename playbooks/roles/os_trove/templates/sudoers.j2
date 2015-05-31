@@ -1,0 +1,4 @@
+# {{ ansible_managed }}
+
+# Defaults:{{ trove_system_user_name }}!requiretty
+{{ trove_system_user_name }} ALL = (root) NOPASSWD: /usr/local/bin/{{ trove_service_name }}-rootwrap

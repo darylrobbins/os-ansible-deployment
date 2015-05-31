@@ -1,0 +1,67 @@
+---
+# Copyright 2014, Rackspace US, Inc.
+# #
+# # Licensed under the Apache License, Version 2.0 (the "License");
+# # you may not use this file except in compliance with the License.
+# # You may obtain a copy of the License at
+# #
+# #     http://www.apache.org/licenses/LICENSE-2.0
+# #
+# # Unless required by applicable law or agreed to in writing, software
+# # distributed under the License is distributed on an "AS IS" BASIS,
+# # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# # See the License for the specific language governing permissions and
+# # limitations under the License.
+
+component_skel:
+  trove_api:
+    belongs_to:
+      # This is a meta group of a given component type.
+      - trove_all
+  trove_conductor:
+    belongs_to:
+      # This is a meta group of a given component type.
+      - trove_all
+  trove_task_manager:
+    belongs_to:
+      # This is a meta group of a given component type.
+      - trove_all
+
+container_skel:
+  trove_api_container:
+    belongs_to:
+      - infra_containers
+      - trove-infra_containers
+    contains:
+      - trove_api
+    properties:
+      service_name: trove
+      container_release: trusty
+  trove_conductor_container:
+    belongs_to:
+      - infra_containers
+      - trove-infra_containers
+    contains:
+      - trove_conductor
+    properties:
+      service_name: trove
+      container_release: trusty
+  trove_task_manager_container:
+    belongs_to:
+      - infra_containers
+      - trove-infra_containers
+    contains:
+      - trove_task_manager
+    properties:
+      service_name: trove
+      container_release: trusty
+
+physical_skel:
+  # This maps back to items in the container_skel.
+  trove-infra_containers:
+    belongs_to:
+      - all_containers
+  # This is a required pair for the container physical entry.
+  trove-infra_hosts:
+    belongs_to:
+      - hosts
