@@ -90,7 +90,6 @@ trove_pip_packages:
   - python-keystoneclient
   - python-memcached
   - python-novaclient
-  - python-trove
   - python-troveclient
   - trove
 
